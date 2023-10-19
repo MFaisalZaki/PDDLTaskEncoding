@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 
 from setuptools import setup, find_packages  # type: ignore
-from src.PDDLTaskEncoding import PDDLTaskEncoding
+from PDDLTaskEncoding import PDDLTaskEncoding
 
-long_description = "TODO"
 
 setup(
     name="PDDLTaskEncoding",
     version=PDDLTaskEncoding.__version__,
     description="PDDL to SMT Encoding Framework",
-    long_description=long_description,
+    long_description="TODO",
     long_description_content_type="text/markdown",
     author="TODO:",
     author_email="TODO",
     url="TODO",
-    packages=find_packages(),
+    packages=find_packages()
     include_package_data=True,
     python_requires=">=3.8",
     install_requires=["z3-solver", "unified-planning"],

@@ -2,12 +2,12 @@
 from unified_planning.io import PDDLReader
 from unified_planning.shortcuts import *
 
-from encodings.linear import LinearEncoding
-from encodings.r2e import R2EEncoding
+from pddlencodings.linear import LinearEncoding
+from pddlencodings.r2e import R2EEncoding
 
 __version__ = "0.0.1"
 
-from utils import notImplementedFunction
+from .utils import notImplementedFunction
 
 _encodingModels = {
     'linear': LinearEncoding,
