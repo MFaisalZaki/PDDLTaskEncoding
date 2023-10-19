@@ -21,6 +21,6 @@ def encodeProblem(domainFile, problemFile, encodingModel, encodingOptions):
     return _encodingModels[encodingModel](PDDLReader().parse_problem(domainFile, problemFile), encodingOptions)
 
 def extractPlanFromModel(solver, encoder, horizon, objective=None):
-    return ExtractPlan(solver, encoder, horizon, objective)
+    return ExtractPlan.ExtractPlan(solver, encoder, horizon, objective)
 
 __all__ = ['encodeProblem', 'extractPlanFromModel']

@@ -8,24 +8,27 @@ from unified_planning.engines.results import *
 
 class ExtractPlan:
     def __init__(self, solver, encoder, horizon, objective=None):
+
         self.horizon     = horizon
         self.plan_z3     = []
         self._liftedPlan = []
-        self._is_valid   = None
+        
         # for numeric problems, it uses the gounrder to generating groudned actions and this cannot be cloned.
         self.encoder     = encoder
-        self.plan        = self._extractPlan(solver)
-        self.cost        = self._extractCost(objective)
 
-        self._is_valid = self._validate() 
-        if not self._is_valid:
-            self.plan = SequentialPlan([], self.encoder.getGroundedProblem().environment)
-        
-    def _extractPlan(self, solver):
-        plan = []
         if solver is None:
             # Return an empty plan
-            return SequentialPlan(plan, self.encoder.getGroundedProblem().environment)
+            self.plan = SequentialPlan([])
+            self._is_valid   = None
+        else: 
+            self.plan        = self._extractPlan(solver)
+            self.cost        = self._extractCost(objective)
+            self._is_valid = self._validate() 
+            if not self.is_valid():
+                self.plan = SequentialPlan([])
+            
+    def _extractPlan(self, solver):
+        plan = []
         model = solver.model()
         ## linearize partial-order plan
         for step in range(self.horizon):
@@ -47,7 +50,7 @@ class ExtractPlan:
             return validator.validate(self.encoder.getGroundedProblem(), self.plan)
 
     def is_valid(self):
-        return self._is_valid
+        return self._is_valid.status.value == 1 if self._is_valid else False
 
     def getLiftedPlan(self):
         return self._liftedPlan
