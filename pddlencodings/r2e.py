@@ -39,6 +39,9 @@ class R2EEncoding:
     def getFormula(self):
         return self.formula
     
+    def getGroundedProblem(self):
+        return self.ground_problem
+    
     def createVariables(self, start_step, end_step):
 
         # MF: I hate this but the only way to get grounded functions parsing the initial values

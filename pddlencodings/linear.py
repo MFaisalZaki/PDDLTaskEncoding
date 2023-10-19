@@ -219,7 +219,10 @@ class LinearEncoding:
         for fluent in constant_fluents:
             if fluent in self.all_problem_fluents:
                 self.all_problem_fluents.remove(fluent)
-      
+    
+    def getGroundedProblem(self):
+        return self.ground_problem
+
     def encodeInitialState(self):
         """!
         Encodes formula defining initial state

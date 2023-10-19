@@ -5,6 +5,8 @@ from unified_planning.shortcuts import *
 from pddlencodings.linear import LinearEncoding
 from pddlencodings.r2e import R2EEncoding
 
+from utilities import ExtractPlan
+
 __version__ = "0.0.1"
 
 _encodingModels = {
@@ -18,4 +20,7 @@ def encodeProblem(domainFile, problemFile, encodingModel, encodingOptions):
     up.shortcuts.get_environment().credits_stream = None
     return _encodingModels[encodingModel](PDDLReader().parse_problem(domainFile, problemFile), encodingOptions)
 
-__all__ = ['encodeProblem']
+def extractPlanFromModel(solver, encoder, horizon, objective=None):
+    return ExtractPlan(solver, encoder, horizon, objective)
+
+__all__ = ['encodeProblem', 'extractPlanFromModel']
