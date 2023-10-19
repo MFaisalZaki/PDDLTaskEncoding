@@ -13,7 +13,7 @@ setup(
     author="TODO:",
     author_email="TODO",
     url="TODO",
-    packages=find_packages()
+    packages=find_packages(),
     include_package_data=True,
     python_requires=">=3.8",
     install_requires=["z3-solver", "unified-planning"],
