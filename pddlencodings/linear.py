@@ -9,7 +9,7 @@ from unified_planning.model.walkers import *
 from ._encodingsUtils import *
 
 class LinearEncoding:
-    def __init__(self, task, cfg):
+    def __init__(self, task, cfg=defaultdict(dict)):
         self.task     = task
 
         self.modifer_encoder = {
@@ -22,8 +22,8 @@ class LinearEncoding:
             'parallel': self._computeParallelMutexes
         }
 
-        self.modifier = self.modifer_encoder[cfg.gets('modifier', 'linear')]
-        self.mutexes_generator = self.mutexes_generator[cfg.gets('modifier', 'linear')]
+        self.modifier = self.modifer_encoder[cfg.get('modifier', 'linear')]
+        self.mutexes_generator = self.mutexes_generator[cfg.get('modifier', 'linear')]
 
         self.z3_action_variables          = defaultdict(dict)
         self.z3_problem_variables         = defaultdict(dict)

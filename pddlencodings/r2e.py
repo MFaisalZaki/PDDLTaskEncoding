@@ -10,7 +10,7 @@ from unified_planning.model.walkers import *
 from ._encodingsUtils import *
 
 class R2EEncoding:
-    def __init__(self, task, cfg): 
+    def __init__(self, task, cfg=defaultdict(dict)): 
         self.task = task
         self.grounding_results = self._ground()
         self.ground_problem = self.grounding_results.problem
