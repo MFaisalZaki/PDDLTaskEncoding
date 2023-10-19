@@ -2,8 +2,8 @@
 from unified_planning.io import PDDLReader
 from unified_planning.shortcuts import *
 
-from pddlencodings.linear import LinearEncoding
-from pddlencodings.r2e import R2EEncoding
+from .pddlencodings.linear import LinearEncoding
+from .pddlencodings.r2e import R2EEncoding
 
 __version__ = "0.0.1"
 
